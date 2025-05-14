@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páginas Restantes - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Estilos para página de contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: #00f0ff;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 2px solid #ff2e97;
+            border-radius: 3px;
+            color: #ffffff;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 1px solid #ff2e97;
+            border-radius: 3px;
+        }
+        
+        .contact-item h3 {
+            color: #00f0ff;
+            margin-bottom: 10px;
+        }
+        
+        /* Estilos para página de carrinho */
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .cart-table th {
+            text-align: left;
+            padding: 12px;
+            background-color: rgba(255, 46, 151, 0.3);
+            color: #00f0ff;
+            font-size: 1.2rem;
+        }
+        
+        .cart-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 46, 151, 0.3);
+        }
+        
+        .cart-product {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cart-product-img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff2e97, #9b31b8);
+            border: 1px solid #00f0ff;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(43, 15, 84, 0.8);
+            border: 1px solid #ff2e97;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #ff2e97;
+        }
+        
+        .cart-summary {
+            max-width: 400px;
+            margin-left: auto;
+            padding: 20px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 2px solid #ff2e97;
+            border-radius: 3px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .summary-total {
+            font-size: 1.4rem;
+            color: #00f0ff;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ff2e97;
+        }
+        
+        /* Estilos para página de finalização de compra */
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            padding: 10px 15px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 1px solid #ff2e97;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .payment-method.active {
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .order-summary {
+            padding: 20px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 2px solid #ff2e97;
+            border-radius: 3px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 46, 151, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info,
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PÁGINA DE CONTATO - Copie este bloco para um arquivo contato.html -->
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="contact-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">CONTATO</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <h2 class="section-title">FALE CONOSCO</h2>
+                        
+                        <div class="contact-form">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Assunto</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Mensagem</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="neon-btn">ENVIAR MENSAGEM</button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <h3>Endereço</h3>
+                                <p>Av. Vaporwave, 404</p>
+                                <p>Bairro Retrô</p>
+                                <p>São Paulo - SP</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <h3>Telefone</h3>
+                                <p>(11) 9876-5432</p>
+                                <p>Segunda a Sexta</p>
+                                <p>9h às 18h</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <h3>E-mail</h3>
+                                <p>contato@vaporstore.com</p>
+                                <p>suporte@vaporstore.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- FIM DA PÁGINA DE CONTATO -->
+
+    <!-- PÁGINA DE CARRINHO - Copie este bloco para um arquivo carrinho.html -->
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="cart-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">CARRINHO DE COMPRAS</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <h2 class="section-title">SEU CARRINHO</h2>
+                        
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="cart-product">
+                                            <div class="cart-product-img"></div>
+                                            <div>
+                                                <h3>Monstera Deliciosa</h3>
+                                                <p>Planta tropical com folhas perfuradas</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>R$ 129,90</td>
+                                    <td>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <span>1</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                    </td>
+                                    <td>R$ 129,90</td>
+                                    <td><button class="neon-btn">Remover</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="cart-product">
+                                            <div class="cart-product-img"></div>
+                                            <div>
+                                                <h3>Pôster Sol Retrowave</h3>
+                                                <p>Arte digital com estética synthwave</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>R$ 49,90</td>
+                                    <td>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <span>2</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                    </td>
+                                    <td>R$ 99,80</td>
+                                    <td><button class="neon-btn">Remover</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="cart-summary">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span>R$ 229,70</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Frete:</span>
+                                <span>R$ 20,00</span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span>Total:</span>
+                                <span>R$ 249,70</span>
+                            </div>
+                            
+                            <a href="compra.html" class="neon-btn" style="display: block; text-align: center; margin-top: 20px; text-decoration: none;">FINALIZAR COMPRA</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- FIM DA PÁGINA DE CARRINHO -->
+
+    <!-- PÁGINA DE FINALIZAÇÃO DE COMPRA - Copie este bloco para um arquivo compra.html -->
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="checkout-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">FINALIZAR COMPRA</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <h2 class="section-title">FINALIZAÇÃO DE PEDIDO</h2>
+                        
+                        <div class="checkout-grid">
+                            <div class="checkout-form">
+                                <h3 style="color: #00f0ff; margin-bottom: 20px;">Informações de Entrega</h3>
+                                
+                                <form action="#" method="post">
+                                    <div class="form-group">
+                                        <label for="fullname">Nome Completo</label>
+                                        <input type="text" id="fullname" name="fullname" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">E-mail</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address">Endereço</label>
+                                        <input type="text" id="address" name="address" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="city">Cidade</label>
+                                        <input type="text" id="city" name="city" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="state">Estado</label>
+                                        <input type="text" id="state" name="state" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="zipcode">CEP</label>
+                                        <input type="text" id="zipcode" name="zipcode" required>
+                                    </div>
+                                    
+                                    <h3 style="color: #00f0ff; margin: 30px 0 20px 0;">Método de Pagamento</h3>
+                                    
+                                    <div class="payment-methods">
+                                        <div class="payment-method active">Cartão de Crédito</div>
+                                        <div class="payment-method">Boleto</div>
+                                        <div class="payment-method">Pix</div>
+                                    </div>
+                                    
+                                    <div class="form-group" style="margin-top: 20px;">
+                                        <label for="cardnumber">Número do Cartão</label>
+                                        <input type="text" id="cardnumber" name="cardnumber">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cardholder">Nome no Cartão</label>
+                                        <input type="text" id="cardholder" name="cardholder">
+                                    </div>
+                                    
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                        <div class="form-group">
+                                            <label for="expiry">Data de Validade</label>
+                                            <input type="text" id="expiry" name="expiry" placeholder="MM/AA">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" id="cvv" name="cvv">
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="neon-btn" style="margin-top: 30px;">CONFIRMAR PEDIDO</button>
+                                </form>
+                            </div>
+                            
+                            <div class="order-summary">
+                                <h3 style="color: #00f0ff; margin-bottom: 20px;">Resumo do Pedido</h3>
+                                
+                                <div class="order-item">
+                                    <span>Monstera Deliciosa x1</span>
+                                    <span>R$ 129,90</span>
+                                </div>
+                                
+                                <div class="order-item">
+                                    <span>Pôster Sol Retrowave x2</span>
+                                    <span>R$ 99,80</span>
+                                </div>
+                                
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span>R$ 229,70</span>
+                                </div>
+                                
+                                <div class="summary-row">
+                                    <span>Frete:</span>
+                                    <span>R$ 20,00</span>
+                                </div>
+                                
+                                <div class="summary-row summary-total">
+                                    <span>Total:</span>
+                                    <span>R$ 249,70</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- FIM DA PÁGINA DE FINALIZAÇÃO DE COMPRA -->
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinil Holográfico - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .product-image-large {
+            height: 400px;
+            background: linear-gradient(135deg, #9b31b8, #2b0f54);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #00f0ff;
+            border-radius: 3px;
+        }
+        
+        .product-image-large::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 46, 151, 0.2);
+            border: 3px solid #ff2e97;
+            box-shadow: 0 0 30px #ff2e97;
+            animation: spin 10s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .product-image-large::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2b0f54;
+            border: 2px solid #00f0ff;
+        }
+        
+        .product-info h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #00f0ff;
+            text-shadow: 0 0 10px #00f0ff;
+        }
+        
+        .product-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .product-price-large {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff2e97;
+            text-shadow: 0 0 10px #ff2e97;
+        }
+        
+        .product-features {
+            margin-bottom: 30px;
+        }
+        
+        .product-features h3 {
+            color: #00f0ff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .product-features ul {
+            list-style-type: none;
+        }
+        
+        .product-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .product-features li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #ff2e97;
+            font-weight: bold;
+        }
+        
+        .buy-options {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .related-products {
+            margin-top: 60px;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="window">
+                <div class="window-header">
+                    <div class="title-bar">DETALHES DO PRODUTO</div>
+                    <div class="close-btn">✕</div>
+                </div>
+                <div class="window-content">
+                    <div class="product-detail">
+                        <div class="product-image-large"></div>
+                        <div class="product-info">
+                            <h1>Vinil Holográfico</h1>
+                            <div class="product-price-large">R$ 89,90</div>
+                            <div class="product-description">
+                                <p>O Vinil Holográfico é uma peça exclusiva que combina a nostalgia dos discos de vinil com a estética futurista do vaporwave. Este disco apresenta um efeito holográfico único que cria padrões visuais hipnotizantes enquanto gira no toca-discos.</p>
+                                <p>Cada disco contém uma seleção cuidadosamente curada de faixas synthwave e vaporwave, criando a trilha sonora perfeita para sua imersão na estética retrô-futurista.</p>
+                            </div>
+                            <div class="product-features">
+                                <h3>Características</h3>
+                                <ul>
+                                    <li>Disco de vinil 12" com efeito holográfico</li>
+                                    <li>8 faixas exclusivas de artistas synthwave</li>
+                                    <li>Capa com arte personalizada em estilo vaporwave</li>
+                                    <li>Edição limitada numerada</li>
+                                    <li>Inclui código para download digital das faixas</li>
+                                </ul>
+                            </div>
+                            <div class="buy-options">
+                                <button class="neon-btn">COMPRAR AGORA</button>
+                                <button class="neon-btn">ADICIONAR AO CARRINHO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-products">
+                <h2 class="section-title">PRODUTOS RELACIONADOS</h2>
+                <div class="related-grid">
+                    <!-- Produto Relacionado 1 -->
+                    <div class="product-card window">
+                        <div class="window-header">
+                            <div class="title-bar">PLAYER RETRÔ</div>
+                            <div class="close-btn">✕</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="product-image" id="player-img"></div>
+                            <h3>Player Vintage</h3>
+                            <p>Reprodutor de música com design retrô dos anos 80</p>
+                            <div class="product-price">R$ 199,90</div>
+                            <a href="produto-player.html" class="neon-btn">VER DETALHES</a>
+                        </div>
+                    </div>
+
+                    <!-- Produto Relacionado 2 -->
+                    <div class="product-card window">
+                        <div class="window-header">
+                            <div class="title-bar">FITA CASSETE</div>
+                            <div class="close-btn">✕</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="product-image" id="cassette-img"></div>
+                            <h3>Cassete Synthwave</h3>
+                            <p>Fita cassete personalizada com trilha sonora vaporwave</p>
+                            <div class="product-price">R$ 39,90</div>
+                            <a href="produto-cassete.html" class="neon-btn">VER DETALHES</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="api-client.js"></script>
+    <script>
+        // Integração com o backend Node.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botão de adicionar ao carrinho
+            const botaoAdicionar = document.querySelector('.neon-btn:nth-child(2)');
+            
+            botaoAdicionar.addEventListener('click', function() {
+                // Adicionar produto ao carrinho (ID 1 = Vinil Holográfico)
+                API.adicionarAoCarrinho(1, 1)
+                    .then(resposta => {
+                        alert('Vinil Holográfico adicionado ao carrinho!');
+                        console.log('Resposta:', resposta);
+                    })
+                    .catch(erro => {
+                        console.error('Erro:', erro);
+                    });
+            });
+            
+            // Botão de comprar agora
+            const botaoComprar = document.querySelector('.neon-btn:nth-child(1)');
+            
+            botaoComprar.addEventListener('click', function() {
+                // Adicionar ao carrinho e redirecionar para a página de carrinho
+                API.adicionarAoCarrinho(1, 1)
+                    .then(resposta => {
+                        window.location.href = 'carrinho.html';
+                    })
+                    .catch(erro => {
+                        console.error('Erro:', erro);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

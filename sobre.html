@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .about-image {
+            height: 300px;
+            background: linear-gradient(225deg, #ff2e97, #9b31b8, #2b0f54);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #00f0ff;
+            border-radius: 3px;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(45deg, rgba(0, 240, 255, 0.1) 0px, rgba(0, 240, 255, 0.1) 2px, transparent 2px, transparent 4px);
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00f0ff;
+            text-shadow: 0 0 10px #00f0ff;
+        }
+        
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .team-section {
+            margin-top: 40px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ff2e97, #9b31b8);
+            border: 2px solid #00f0ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-avatar::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 40%;
+            height: 40%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            color: #00f0ff;
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            font-size: 1rem;
+            color: #ff2e97;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">SOBRE NÓS</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="about-content">
+                            <div class="about-image"></div>
+                            <div class="about-text">
+                                <h2>Nossa História</h2>
+                                <p>A VaporStore nasceu em 2018 da paixão por estética retrô e vaporwave. Começamos como um pequeno projeto online e hoje somos referência em produtos com design nostálgico dos anos 80 e 90.</p>
+                                <p>Nossa missão é trazer de volta a estética e sensação daquela época, combinando elementos vintage com tecnologia moderna para criar uma experiência única para nossos clientes.</p>
+                                <p>Todos os produtos são cuidadosamente selecionados para garantir qualidade e autenticidade, mantendo viva a essência vaporwave em cada detalhe.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-section">
+                            <h2 class="section-title">NOSSA EQUIPE</h2>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <div class="member-name">Ana Synthwave</div>
+                                    <div class="member-role">Fundadora & CEO</div>
+                                </div>
+                                
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <div class="member-name">Carlos Retro</div>
+                                    <div class="member-role">Designer</div>
+                                </div>
+                                
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <div class="member-name">Júlia Neon</div>
+                                    <div class="member-role">Marketing</div>
+                                </div>
+                                
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <div class="member-name">Rafael Wave</div>
+                                    <div class="member-role">Atendimento</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

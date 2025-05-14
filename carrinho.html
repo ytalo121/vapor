@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .cart-table th {
+            text-align: left;
+            padding: 12px;
+            background-color: rgba(255, 46, 151, 0.3);
+            color: #00f0ff;
+            font-size: 1.2rem;
+        }
+        
+        .cart-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 46, 151, 0.3);
+        }
+        
+        .cart-product {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cart-product-img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff2e97, #9b31b8);
+            border: 1px solid #00f0ff;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(43, 15, 84, 0.8);
+            border: 1px solid #ff2e97;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #ff2e97;
+        }
+        
+        .cart-summary {
+            max-width: 400px;
+            margin-left: auto;
+            padding: 20px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 2px solid #ff2e97;
+            border-radius: 3px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .summary-total {
+            font-size: 1.4rem;
+            color: #00f0ff;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ff2e97;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-product {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="cart-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">CARRINHO DE COMPRAS</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <h2 class="section-title">SEU CARRINHO</h2>
+                        
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="cart-product">
+                                            <div class="cart-product-img"></div>
+                                            <div>
+                                                <h3>Monstera Deliciosa</h3>
+                                                <p>Planta tropical com folhas perfuradas</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>R$ 129,90</td>
+                                    <td>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <span>1</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                    </td>
+                                    <td>R$ 129,90</td>
+                                    <td><button class="neon-btn">Remover</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="cart-product">
+                                            <div class="cart-product-img"></div>
+                                            <div>
+                                                <h3>Pôster Sol Retrowave</h3>
+                                                <p>Arte digital com estética synthwave</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>R$ 49,90</td>
+                                    <td>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <span>2</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                    </td>
+                                    <td>R$ 99,80</td>
+                                    <td><button class="neon-btn">Remover</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="cart-summary">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span>R$ 229,70</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Frete:</span>
+                                <span>R$ 20,00</span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span>Total:</span>
+                                <span>R$ 249,70</span>
+                            </div>
+                            
+                            <a href="compra.html" class="neon-btn" style="display: block; text-align: center; margin-top: 20px; text-decoration: none;">FINALIZAR COMPRA</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="api-client.js"></script>
+    <script>
+        // Função para renderizar os itens do carrinho
+        async function renderizarCarrinho() {
+            const tabelaCarrinho = document.querySelector('.cart-table tbody');
+            const resumoContainer = document.querySelector('.cart-summary');
+            
+            // Obter dados do carrinho da API
+            const carrinho = await API.obterCarrinho();
+            
+            // Verificar se o carrinho está vazio
+            if (!carrinho.length) {
+                tabelaCarrinho.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 30px;">
+                            Seu carrinho está vazio. Continue comprando para adicionar produtos!
+                        </td>
+                    </tr>
+                `;
+                
+                resumoContainer.innerHTML = `
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>R$ 0,00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Frete:</span>
+                        <span>R$ 0,00</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total:</span>
+                        <span>R$ 0,00</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="index.html#produtos" class="neon-btn">CONTINUAR COMPRANDO</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Renderizar itens do carrinho
+            let itensHTML = '';
+            let subtotal = 0;
+            
+            carrinho.forEach(item => {
+                const total = item.produto.preco * item.quantidade;
+                subtotal += total;
+                
+                itensHTML += `
+                    <tr data-id="${item.produto.id}">
+                        <td>
+                            <div class="cart-product">
+                                <div class="cart-product-img"></div>
+                                <div>
+                                    <h3>${item.produto.nome}</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>R$ ${item.produto.preco.toFixed(2)}</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="quantity-btn decrease">-</button>
+                                <span>${item.quantidade}</span>
+                                <button class="quantity-btn increase">+</button>
+                            </div>
+                        </td>
+                        <td>R$ ${total.toFixed(2)}</td>
+                        <td>
+                            <button class="remove-btn" data-id="${item.produto.id}">✕</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tabelaCarrinho.innerHTML = itensHTML;
+            
+            // Calcular valores para o resumo
+            const frete = subtotal > 200 ? 0 : 15.90;
+            const total = subtotal + frete;
+            
+            // Renderizar resumo do carrinho
+            resumoContainer.innerHTML = `
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span>R$ ${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Frete:</span>
+                    <span>${frete === 0 ? 'GRÁTIS' : 'R$ ' + frete.toFixed(2)}</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total:</span>
+                    <span>R$ ${total.toFixed(2)}</span>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button id="finalizar-compra" class="neon-btn">FINALIZAR COMPRA</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button id="limpar-carrinho" class="neon-btn">LIMPAR CARRINHO</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <a href="index.html#produtos" class="neon-btn">CONTINUAR COMPRANDO</a>
+                </div>
+            `;
+            
+            // Adicionar eventos aos botões
+            adicionarEventos();
+        }
+        
+        // Função para adicionar eventos aos botões do carrinho
+        function adicionarEventos() {
+            // Botões de aumentar quantidade
+            document.querySelectorAll('.quantity-btn.increase').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('tr');
+                    const id = parseInt(item.dataset.id);
+                    API.adicionarAoCarrinho(id, 1).then(() => renderizarCarrinho());
+                });
+            });
+            
+            // Botões de diminuir quantidade
+            document.querySelectorAll('.quantity-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('tr');
+                    const id = parseInt(item.dataset.id);
+                    const quantidade = parseInt(item.querySelector('.quantity-control span').textContent);
+                    
+                    if (quantidade > 1) {
+                        API.adicionarAoCarrinho(id, -1).then(() => renderizarCarrinho());
+                    } else {
+                        API.removerDoCarrinho(id).then(() => renderizarCarrinho());
+                    }
+                });
+            });
+            
+            // Botões de remover item
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id);
+                    API.removerDoCarrinho(id).then(() => renderizarCarrinho());
+                });
+            });
+            
+            // Botão de limpar carrinho
+            const btnLimpar = document.getElementById('limpar-carrinho');
+            if (btnLimpar) {
+                btnLimpar.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja limpar o carrinho?')) {
+                        API.limparCarrinho().then(() => renderizarCarrinho());
+                    }
+                });
+            }
+            
+            // Botão de finalizar compra
+            const btnFinalizar = document.getElementById('finalizar-compra');
+            if (btnFinalizar) {
+                btnFinalizar.addEventListener('click', function() {
+                    alert('Compra finalizada com sucesso! Obrigado por comprar na VaporStore.');
+                    API.limparCarrinho().then(() => {
+                        window.location.href = 'index.html';
+                    });
+                });
+            }
+        }
+        
+        // Inicializar a página do carrinho
+        document.addEventListener('DOMContentLoaded', function() {
+            renderizarCarrinho();
+        });
+    </script>
+</body>
+</html>

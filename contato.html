@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: #00f0ff;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 2px solid #ff2e97;
+            border-radius: 3px;
+            color: #ffffff;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(43, 15, 84, 0.5);
+            border: 1px solid #ff2e97;
+            border-radius: 3px;
+        }
+        
+        .contact-item h3 {
+            color: #00f0ff;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="contact-section">
+                <div class="window">
+                    <div class="window-header">
+                        <div class="title-bar">CONTATO</div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="window-content">
+                        <h2 class="section-title">FALE CONOSCO</h2>
+                        
+                        <div class="contact-form">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Assunto</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Mensagem</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="neon-btn">ENVIAR MENSAGEM</button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <h3>Endereço</h3>
+                                <p>Av. Vaporwave, 404</p>
+                                <p>Bairro Retrô</p>
+                                <p>São Paulo - SP</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <h3>Telefone</h3>
+                                <p>(11) 9876-5432</p>
+                                <p>Segunda a Sexta</p>
+                                <p>9h às 18h</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <h3>E-mail</h3>
+                                <p>contato@vaporstore.com</p>
+                                <p>suporte@vaporstore.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

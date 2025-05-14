@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - VaporStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .products-container {
+            padding: 20px;
+        }
+        
+        .filters {
+            background-color: rgba(43, 15, 84, 0.8);
+            border: 2px solid #ff2e97;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-size: 1.2rem;
+            color: #00f0ff;
+        }
+        
+        .filter-group select {
+            background-color: rgba(43, 15, 84, 0.9);
+            border: 1px solid #ff2e97;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-family: 'VT323', monospace;
+            font-size: 1rem;
+        }
+        
+        .search-box {
+            flex-grow: 1;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            background-color: rgba(43, 15, 84, 0.9);
+            border: 1px solid #ff2e97;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 3px;
+            font-family: 'VT323', monospace;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #ff2e97;
+            cursor: pointer;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-image {
+            height: 180px;
+            background-position: center;
+            background-size: cover;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+        
+        #quadro-img {
+            background: linear-gradient(45deg, #ff2e97, #2b0f54);
+        }
+        
+        #quadro-img::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(0deg, rgba(43, 15, 84, 0.8), transparent);
+        }
+        
+        #camiseta-img {
+            background: linear-gradient(135deg, #2b0f54, #ff2e97);
+        }
+        
+        #camiseta-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(0deg, transparent 0%, transparent 90%, rgba(255, 255, 255, 0.2) 100%);
+        }
+        
+        #fones-img {
+            background: linear-gradient(135deg, #00f0ff, #2b0f54);
+        }
+        
+        #fones-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #ff2e97;
+        }
+        
+        #cassete-img {
+            background: linear-gradient(225deg, #ff2e97, #2b0f54);
+        }
+        
+        #cassete-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 55px;
+            background: rgba(0, 240, 255, 0.2);
+        }
+        
+        #luminaria-img {
+            background: linear-gradient(90deg, #2b0f54, #ff2e97);
+        }
+        
+        #luminaria-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 120px;
+            background: rgba(0, 240, 255, 0.3);
+            clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
+        }
+        
+        #monstera-img {
+            background: linear-gradient(270deg, #00f0ff, #2b0f54);
+        }
+        
+        #monstera-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 46, 151, 0.3);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        #oculos-img {
+            background: linear-gradient(315deg, #ff2e97, #00f0ff);
+        }
+        
+        #oculos-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 40px;
+            background: rgba(43, 15, 84, 0.5);
+            border-radius: 20px;
+        }
+        
+        #tapete-img {
+            background: linear-gradient(180deg, #2b0f54, #ff2e97);
+        }
+        
+        #tapete-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 240, 255, 0.2) 10px, rgba(0, 240, 255, 0.2) 20px);
+        }
+        
+        /* Estilos para os novos produtos */
+        #console-img {
+            background: linear-gradient(45deg, #00f0ff, #2b0f54);
+        }
+        
+        #console-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 70px;
+            border: 3px solid #ff2e97;
+            border-radius: 5px;
+        }
+        
+        #relogio-img {
+            background: linear-gradient(180deg, #ff2e97, #2b0f54);
+        }
+        
+        #relogio-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 40px;
+            background: rgba(0, 240, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        #vinil-img {
+            background: linear-gradient(270deg, #ff2e97, #2b0f54);
+        }
+        
+        #vinil-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 15px solid rgba(0, 240, 255, 0.3);
+        }
+        
+        #mochila-img {
+            background: linear-gradient(135deg, #00f0ff, #ff2e97);
+        }
+        
+        #mochila-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(135deg, transparent, transparent 15px, rgba(43, 15, 84, 0.3) 15px, rgba(43, 15, 84, 0.3) 30px);
+        }
+        
+        #teclado-img {
+            background: linear-gradient(90deg, #2b0f54, #00f0ff);
+        }
+        
+        #teclado-img::before {
+            content: '';
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 20px;
+            background: rgba(255, 46, 151, 0.5);
+            border-radius: 3px;
+        }
+        
+        #poster-img {
+            background: linear-gradient(315deg, #2b0f54, #ff2e97);
+        }
+        
+        #poster-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(0deg, transparent 0%, transparent 80%, rgba(0, 240, 255, 0.4) 100%);
+        }
+        
+        #estatueta-img {
+            background: linear-gradient(225deg, #00f0ff, #2b0f54);
+        }
+        
+        #estatueta-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 100px;
+            background: rgba(255, 46, 151, 0.4);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+        }
+        
+        #mousepad-img {
+            background: linear-gradient(90deg, #ff2e97, #2b0f54);
+        }
+        
+        #mousepad-img::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border: 3px solid rgba(0, 240, 255, 0.6);
+            border-radius: 5px;
+        }
+        
+        #caneca-img {
+            background: linear-gradient(135deg, #2b0f54, #ff2e97);
+        }
+        
+        #caneca-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 80px;
+            border: 3px solid rgba(0, 240, 255, 0.5);
+            border-radius: 5px 5px 25px 25px;
+        }
+        
+        #almofada-img {
+            background: linear-gradient(45deg, #00f0ff, #ff2e97);
+        }
+        
+        #almofada-img::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: rgba(43, 15, 84, 0.4);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #00f0ff;
+        }
+        
+        .product-card p {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ff2e97;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            background-color: rgba(0, 240, 255, 0.2);
+            color: #00f0ff;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 10px;
+        }
+        
+        .pagination button {
+            background-color: rgba(43, 15, 84, 0.8);
+            border: 1px solid #ff2e97;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination button:hover {
+            background-color: rgba(155, 49, 184, 0.8);
+            box-shadow: 0 0 10px rgba(255, 46, 151, 0.5);
+        }
+        
+        .pagination button.active {
+            background-color: #ff2e97;
+            box-shadow: 0 0 10px #ff2e97;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="logo">VaporStore</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html" class="active">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="window">
+                <div class="window-header">
+                    <div class="title-bar">CATÁLOGO DE PRODUTOS</div>
+                    <div class="close-btn">✕</div>
+                </div>
+                <div class="window-content products-container">
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="categoria">Categoria:</label>
+                            <select id="categoria">
+                                <option value="todos">Todos</option>
+                                <option value="audio">Áudio</option>
+                                <option value="decoracao">Decoração</option>
+                                <option value="vestuario">Vestuário</option>
+                                <option value="eletronicos">Eletrônicos</option>
+                                <option value="acessorios">Acessórios</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="preco">Preço:</label>
+                            <select id="preco">
+                                <option value="todos">Todos</option>
+                                <option value="0-50">Até R$ 50</option>
+                                <option value="50-100">R$ 50 - R$ 100</option>
+                                <option value="100-200">R$ 100 - R$ 200</option>
+                                <option value="200+">Acima de R$ 200</option>
+                            </select>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Buscar produtos...">
+                            <button>🔍</button>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="produtos-container">
+                        <!-- Produto 1: Quadro -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">QUADRO SUNSET</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="quadro-img"></div>
+                                <h3>Quadro Sunset Vaporwave</h3>
+                                <p>Quadro decorativo com arte digital de pôr do sol em estilo vaporwave com palmeiras e grid.</p>
+                                <div class="product-price">R$ 89,90</div>
+                                <a href="produto-quadro.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 2: Camiseta -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">CAMISETA RETROWAVE</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">vestuario</div>
+                                <div class="product-image" id="camiseta-img"></div>
+                                <h3>Camiseta Retrowave</h3>
+                                <p>Camiseta com estampa digital de sol e grid em estilo retrowave dos anos 80.</p>
+                                <div class="product-price">R$ 69,90</div>
+                                <a href="produto-camiseta.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 3: Fones -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">FONES NEON WAVE</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">audio</div>
+                                <div class="product-image" id="fones-img"></div>
+                                <h3>Fones Neon Wave</h3>
+                                <p>Fones de ouvido com iluminação LED em cores neon que pulsam ao ritmo da música.</p>
+                                <div class="product-price">R$ 199,90</div>
+                                <a href="produtos/produto-fones.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 4: Cassete -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">CASSETE SYNTHWAVE</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">audio</div>
+                                <div class="product-image" id="cassete-img"></div>
+                                <h3>Cassete Synthwave</h3>
+                                <p>Fita cassete com coletânea de músicas synthwave exclusivas em edição limitada.</p>
+                                <div class="product-price">R$ 49,90</div>
+                                <a href="produto-cassete.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 5: Luminária -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">LUMINÁRIA NEON</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="luminaria-img"></div>
+                                <h3>Luminária Neon Palmeira</h3>
+                                <p>Luminária em formato de palmeira com luz neon rosa e azul, perfeita para decoração.</p>
+                                <div class="product-price">R$ 149,90</div>
+                                <a href="produto-luminaria.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 6: Planta -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">MONSTERA DELICIOSA</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="monstera-img"></div>
+                                <h3>Monstera Deliciosa</h3>
+                                <p>Planta artificial com acabamento metálico em tons de roxo e azul.</p>
+                                <div class="product-price">R$ 79,90</div>
+                                <a href="produto-monstera.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 7: Óculos -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">ÓCULOS CYBER</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">acessorios</div>
+                                <div class="product-image" id="oculos-img"></div>
+                                <h3>Óculos Cyber Shades</h3>
+                                <p>Óculos futuristas com lentes espelhadas e armação neon, estilo cyberpunk.</p>
+                                <div class="product-price">R$ 129,90</div>
+                                <a href="produto-oculos.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 8: Tapete -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">TAPETE GRID</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="tapete-img"></div>
+                                <h3>Tapete Grid Retro</h3>
+                                <p>Tapete com padrão de grid em perspectiva, inspirado na estética dos anos 80.</p>
+                                <div class="product-price">R$ 159,90</div>
+                                <a href="produto-tapete.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 9: Console Retrô -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">CONSOLE RETRO X</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">eletronicos</div>
+                                <div class="product-image" id="console-img"></div>
+                                <h3>Console Retro X</h3>
+                                <p>Console de videogame retrô com design futurista e 500 jogos clássicos pré-instalados.</p>
+                                <div class="product-price">R$ 299,90</div>
+                                <a href="produto-console.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 10: Relógio Digital -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">RELÓGIO NEON</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">eletronicos</div>
+                                <div class="product-image" id="relogio-img"></div>
+                                <h3>Relógio Digital Neon</h3>
+                                <p>Relógio digital com display LED em cores neon e design inspirado nos anos 80.</p>
+                                <div class="product-price">R$ 129,90</div>
+                                <a href="produto-relogio.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 11: Vinil Colorido -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">VINIL SYNTHWAVE</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">audio</div>
+                                <div class="product-image" id="vinil-img"></div>
+                                <h3>Vinil Synthwave</h3>
+                                <p>Disco de vinil colorido com coletânea de músicas synthwave em edição limitada.</p>
+                                <div class="product-price">R$ 89,90</div>
+                                <a href="produto-vinil.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 12: Mochila Holográfica -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">MOCHILA HOLO</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">acessorios</div>
+                                <div class="product-image" id="mochila-img"></div>
+                                <h3>Mochila Holográfica</h3>
+                                <p>Mochila com material holográfico que muda de cor conforme o ângulo de visão.</p>
+                                <div class="product-price">R$ 179,90</div>
+                                <a href="produto-mochila.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 13: Teclado Mecânico -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">TECLADO RGB</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">eletronicos</div>
+                                <div class="product-image" id="teclado-img"></div>
+                                <h3>Teclado Mecânico RGB</h3>
+                                <p>Teclado mecânico com iluminação RGB personalizável e design retrô-futurista.</p>
+                                <div class="product-price">R$ 249,90</div>
+                                <a href="produto-teclado.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 14: Poster Holográfico -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">POSTER HOLO</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="poster-img"></div>
+                                <h3>Poster Holográfico</h3>
+                                <p>Poster holográfico com arte digital de paisagem futurista em estilo vaporwave.</p>
+                                <div class="product-price">R$ 59,90</div>
+                                <a href="produto-poster.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 15: Estatueta Retrô -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">ESTATUETA CYBER</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="estatueta-img"></div>
+                                <h3>Estatueta Cyberpunk</h3>
+                                <p>Estatueta decorativa com design cyberpunk e acabamento metálico em cores neon.</p>
+                                <div class="product-price">R$ 119,90</div>
+                                <a href="produto-estatueta.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 16: Mousepad RGB -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">MOUSEPAD RGB</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">acessorios</div>
+                                <div class="product-image" id="mousepad-img"></div>
+                                <h3>Mousepad RGB XL</h3>
+                                <p>Mousepad extra grande com iluminação RGB nas bordas e estampa de grid vaporwave.</p>
+                                <div class="product-price">R$ 99,90</div>
+                                <a href="produto-mousepad.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 17: Caneca Térmica -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">CANECA TÉRMICA</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">acessorios</div>
+                                <div class="product-image" id="caneca-img"></div>
+                                <h3>Caneca Térmica Retrowave</h3>
+                                <p>Caneca térmica com estampa retrowave que muda de cor conforme a temperatura.</p>
+                                <div class="product-price">R$ 69,90</div>
+                                <a href="produto-caneca.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 18: Almofada Neon -->
+                        <div class="product-card window">
+                            <div class="window-header">
+                                <div class="title-bar">ALMOFADA NEON</div>
+                                <div class="close-btn">✕</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="category-tag">decoracao</div>
+                                <div class="product-image" id="almofada-img"></div>
+                                <h3>Almofada Neon Geométrica</h3>
+                                <p>Almofada com estampa geométrica em cores neon e tecido que brilha no escuro.</p>
+                                <div class="product-price">R$ 79,90</div>
+                                <a href="produto-almofada.html" class="neon-btn">VER DETALHES</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>APR. 27 2023</p>
+                    <p>© VAPORSTORE</p>
+                </div>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtros
+            const categoriaSelect = document.getElementById('categoria');
+            const precoSelect = document.getElementById('preco');
+            const searchInput = document.querySelector('.search-box input');
+            const searchButton = document.querySelector('.search-box button');
+            const produtos = document.querySelectorAll('.product-card');
+            
+            // Função para filtrar produtos
+            function filtrarProdutos() {
+                const categoriaFiltro = categoriaSelect.value;
+                const precoFiltro = precoSelect.value;
+                const termoBusca = searchInput.value.toLowerCase();
+                
+                produtos.forEach(produto => {
+                    const categoria = produto.querySelector('.category-tag').textContent;
+                    const preco = parseFloat(produto.querySelector('.product-price').textContent.replace('R$ ', '').replace(',', '.'));
+                    const nome = produto.querySelector('h3').textContent.toLowerCase();
+                    const descricao = produto.querySelector('p').textContent.toLowerCase();
+                    
+                    // Verificar categoria
+                    const passaCategoria = categoriaFiltro === 'todos' || categoria === categoriaFiltro;
+                    
+                    // Verificar preço
+                    let passaPreco = true;
+                    if (precoFiltro === '0-50') passaPreco = preco <= 50;
+                    else if (precoFiltro === '50-100') passaPreco = preco > 50 && preco <= 100;
+                    else if (precoFiltro === '100-200') passaPreco = preco > 100 && preco <= 200;
+                    else if (precoFiltro === '200+') passaPreco = preco > 200;
+                    
+                    // Verificar termo de busca
+                    const passaBusca = termoBusca === '' || 
+                                      nome.includes(termoBusca) || 
+                                      descricao.includes(termoBusca);
+                    
+                    // Exibir ou ocultar produto
+                    if (passaCategoria && passaPreco && passaBusca) {
+                        produto.style.display = 'flex';
+                    } else {
+                        produto.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Adicionar eventos de filtro
+            categoriaSelect.addEventListener('change', filtrarProdutos);
+            precoSelect.addEventListener('change', filtrarProdutos);
+            searchButton.addEventListener('click', filtrarProdutos);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    filtrarProdutos();
+                }
+            });
+            
+            // Paginação (simulada)
+            const paginationButtons = document.querySelectorAll('.pagination button');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover classe active de todos os botões
+                    paginationButtons.forEach(btn => btn.classList.remove('active'));
+                    // Adicionar classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Em uma implementação real, aqui carregaria os produtos da página selecionada
+                    // Por enquanto, apenas um alerta
+                    if (this.textContent !== '1') {
+                        alert('Página ' + this.textContent + ' em desenvolvimento!');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
